@@ -25,7 +25,8 @@ namespace BibliotecaClassLibrary.Data
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "update Categoria set nome=@nome where=@id";
+            cmd.CommandText = "update Categoria set nome=@nome where idCategoria=@id";
+            cmd.Parameters.AddWithValue("@id", e.IdCategoria);
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.ExecuteNonQuery();
         }

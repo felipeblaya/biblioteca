@@ -17,6 +17,16 @@ namespace BibliotecaClassLibrary.Data
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = "insert into Categoria values (@nome)";
+            cmd.Parameters.AddWithValue("@nome", e.Nome);
+            cmd.ExecuteNonQuery();
+        }
+        internal void Update(Autor e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "update Autor set nome=@nome where idAutor=@id";
+            cmd.Parameters.AddWithValue("@id", e.IdAutor);
+            cmd.Parameters.AddWithValue("nome", e.Nome);
         }
     }
 }
